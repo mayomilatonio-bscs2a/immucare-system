@@ -1,11 +1,11 @@
 <?php
 
 if (headers_sent($file, $line)) {
-    error_log(
-        "ImmuCare headers already sent by: "
-        . $file . " on line " . $line
-    );
+    error_log("HEADERS ALREADY SENT: $file on line $line");
+} else {
+    error_log("HEADERS NOT YET SENT");
 }
+
 
 
 // Start a secure session.
