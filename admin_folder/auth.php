@@ -1,14 +1,16 @@
 <?php
 
 if (headers_sent($file, $line)) {
-    error_log("HEADERS ALREADY SENT: $file on line $line");
+    error_log(
+        "HEADERS ALREADY SENT: "
+        . $file . " on line " . $line
+    );
 } else {
     error_log("HEADERS NOT YET SENT");
 }
 
 
-
-// Start a secure session.
+// Configure session before any HTML output.
 if (session_status() === PHP_SESSION_NONE) {
 
     ini_set("session.use_strict_mode", "1");
@@ -32,7 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Determine whether the application runs locally.
+// Login URL for local XAMPP and Render.
 function immucareAdminLoginUrl() {
 
     $host = $_SERVER["HTTP_HOST"] ?? "";
@@ -49,11 +51,10 @@ function immucareAdminLoginUrl() {
     return "/admin_folder/login.php";
 }
 
-// Require staff or administrator login.
+// Require an authenticated staff account.
 function requireStaffLogin() {
 
     if (empty($_SESSION["user_id"])) {
-
         header("Location: " . immucareAdminLoginUrl());
         exit;
     }
@@ -65,7 +66,6 @@ function requireAdministrator() {
     requireStaffLogin();
 
     if (($_SESSION["role"] ?? "") !== "Administrator") {
-
         http_response_code(403);
         exit("Administrator access is required.");
     }
