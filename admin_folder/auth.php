@@ -2,14 +2,14 @@
 
 if (headers_sent($file, $line)) {
     error_log(
-        "HEADERS ALREADY SENT: "
-        . $file . " on line " . $line
+        "IMMUCARE HEADER DEBUG: Output started in "
+        . $file . " at line " . $line
     );
 } else {
-    error_log("HEADERS NOT YET SENT");
+    error_log(
+        "IMMUCARE HEADER DEBUG: Headers not sent yet"
+    );
 }
-
-
 // Configure session before any HTML output.
 if (session_status() === PHP_SESSION_NONE) {
 
