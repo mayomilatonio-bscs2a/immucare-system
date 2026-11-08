@@ -1,6 +1,6 @@
-<?php
 
-require_once "auth.php";
+<?php
+require_once __DIR__ . "/auth.php";
 
 if (!empty($_SESSION["user_id"])) {
     header("Location: index.php");
@@ -22,7 +22,6 @@ function e($value) {
     );
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,7 +135,7 @@ function e($value) {
     <h1>ImmuCare</h1>
 
     <p class="subtitle">
-        HRU Administrator Login
+        RHU Administrator Login
     </p>
 
     <?php if ($error !== ""): ?>
@@ -151,7 +150,7 @@ function e($value) {
         <input
             type="hidden"
             name="csrf_token"
-            value="<?= e($_SESSION['login_csrf']) ?>"
+            value="<?= e($_SESSION["login_csrf"]) ?>"
         >
 
         <label for="username">Username</label>

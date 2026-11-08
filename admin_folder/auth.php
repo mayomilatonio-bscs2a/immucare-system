@@ -1,5 +1,12 @@
-
 <?php
+
+if (headers_sent($file, $line)) {
+    error_log(
+        "ImmuCare headers already sent by: "
+        . $file . " on line " . $line
+    );
+}
+
 
 // Start a secure session.
 if (session_status() === PHP_SESSION_NONE) {
