@@ -54,6 +54,18 @@ $stmt->execute();
 
 $user = $stmt->get_result()->fetch_assoc();
 $stmt->close();
+// Temporary login diagnostics.
+// Do not log passwords or password hashes.
+error_log(
+    "IMMUCARE LOGIN DEBUG: " .
+    "user_found=" . ($user ? "yes" : "no") .
+    ", status_filter=Active" .
+    ", password_match=" . (
+        $user && password_verify($password, $user["password"])
+            ? "yes"
+            : "no"
+    )
+);
 
 if (
     !$user ||
