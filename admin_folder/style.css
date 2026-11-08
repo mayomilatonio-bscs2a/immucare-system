@@ -1,0 +1,621 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e9efec;
+    color: #315f68;
+}
+
+/* =========================
+   MAIN DASHBOARD WRAPPER
+========================= */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+    padding: 12px;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 220px;
+    min-height: calc(100vh - 24px);
+
+    background: linear-gradient(
+        180deg,
+        #e8fff7 0%,
+        #e6f9f3 65%,
+        #dff7f4 100%
+    );
+
+    border-radius: 18px 0 0 18px;
+
+    padding: 25px 18px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.logo img {
+    width: 150px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* =========================
+   SIDEBAR MENU
+========================= */
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+
+    color: #39776f;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    padding: 13px 14px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    transition: 0.2s ease;
+}
+
+.sidebar nav a:hover {
+    background: #c9f0e4;
+}
+
+.sidebar nav a.active {
+    background: linear-gradient(
+        90deg,
+        #aee6d5,
+        #c6f1e3
+    );
+
+    color: #245d58;
+}
+
+/* =========================
+   MAIN AREA
+========================= */
+
+.main {
+    flex: 1;
+
+    background: #f8fcfb;
+
+    min-height: calc(100vh - 24px);
+    height: calc(100vh - 24px);
+
+    border-radius: 0 18px 18px 0;
+
+    padding: 15px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    height: 65px;
+    min-height: 65px;
+
+    background: linear-gradient(
+        90deg,
+        #e9faf4,
+        #e9f7f3
+    );
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    margin-bottom: 15px;
+}
+
+.welcome-admin {
+    font-size: 22px;
+    font-weight: 700;
+    color: #315f68;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #527a80;
+}
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-rows:
+        145px
+        minmax(0, 1fr);
+
+    gap: 14px;
+
+    min-height: 0;
+}
+
+/* =========================
+   GENERAL CARD
+========================= */
+
+.card {
+    height: 100%;
+
+    border-radius: 15px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(70, 110, 110, 0.06);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.8);
+
+    min-height: 0;
+}
+
+.card h2 {
+    font-size: 21px;
+    line-height: 1.2;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================
+   CLICKABLE CARDS
+========================= */
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+
+    display: block;
+    height: 100%;
+}
+
+.card-link .card {
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-link .card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(70, 110, 110, 0.13);
+}
+
+/* =========================
+   UPCOMING APPOINTMENTS
+========================= */
+
+.upcoming {
+    background: linear-gradient(
+        135deg,
+        #ffeaf2,
+        #ffe7ef
+    );
+}
+
+.upcoming-content {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    height: 100%;
+}
+
+.upcoming-content img {
+    flex-shrink: 0;
+}
+
+.upcoming-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.upcoming-text h2 {
+    margin-bottom: 8px;
+}
+
+.view-link {
+    font-size: 13px;
+    color: #7d6874;
+}
+
+/* =========================
+   NEXT VACCINE
+========================= */
+
+.vaccine {
+    background: linear-gradient(
+        135deg,
+        #e8f6ff,
+        #daf0ff
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.vaccine h2 {
+    margin-bottom: 10px;
+}
+
+.vaccine-name {
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #39776f;
+
+    margin-bottom: 4px;
+}
+
+.vaccine-patient {
+    font-size: 13px;
+
+    color: #66858b;
+
+    margin-bottom: 4px;
+}
+
+.vaccine-date {
+    font-size: 14px;
+
+    color: #527a80;
+
+    margin-bottom: 5px;
+}
+
+.countdown {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #468c7b;
+}
+
+/* =========================
+   MONTHLY STATISTICS
+========================= */
+
+.tracking {
+    background: linear-gradient(
+        135deg,
+        #e9faf4,
+        #e5f8f1
+    );
+
+    display: flex;
+    flex-direction: column;
+}
+
+.statistics-title {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statistics-title span {
+    font-size: 12px;
+    color: #72918c;
+}
+
+.statistics-grid {
+    flex: 1;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.stat-box {
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 15px;
+
+    min-height: 120px;
+}
+
+.stat-number {
+    font-size: 30px;
+    font-weight: 700;
+
+    color: #40977f;
+
+    margin-bottom: 7px;
+}
+
+.stat-label {
+    font-size: 13px;
+
+    color: #637f80;
+
+    line-height: 1.4;
+}
+
+/* =========================
+   RECENT USER ACTIVITY
+========================= */
+
+.users {
+    background: linear-gradient(
+        135deg,
+        #eaf7ff,
+        #e0f2ff
+    );
+
+    display: flex;
+    flex-direction: column;
+}
+
+.users h3 {
+    margin-bottom: 4px;
+}
+
+.activity-heading {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    padding: 10px 15px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    color: #789297;
+}
+
+.activity-row {
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr;
+
+    align-items: center;
+
+    padding: 14px 15px;
+
+    margin-top: 8px;
+
+    border-radius: 14px;
+
+    color: #5e7d86;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 3px 8px
+        rgba(0, 0, 0, 0.03);
+}
+
+/* =========================
+   OPTIONAL STATUS COLORS
+========================= */
+
+.status-success {
+    color: #3f8b74;
+}
+
+.status-warning {
+    color: #c58a42;
+}
+
+.status-danger {
+    color: #c35e6f;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 180px;
+    }
+
+    .main {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            145px
+            180px
+            auto
+            auto;
+
+        overflow-y: visible;
+    }
+
+    .statistics-grid {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .dashboard {
+        padding: 0;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        border-radius: 0;
+
+        min-height: 100vh;
+        height: auto;
+
+        overflow-y: auto;
+    }
+
+    .topbar {
+        border-radius: 0;
+    }
+
+    .welcome-admin {
+        font-size: 18px;
+    }
+
+    .profile {
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .content {
+        display: grid;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+
+        gap: 12px;
+    }
+
+    .upcoming,
+    .vaccine,
+    .tracking,
+    .users {
+        min-height: 180px;
+    }
+
+    .upcoming-content {
+        gap: 12px;
+    }
+
+    .upcoming-content img {
+        width: 70px;
+    }
+
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-box {
+        min-height: 95px;
+    }
+
+    .activity-heading,
+    .activity-row {
+        grid-template-columns:
+            1fr
+            1fr;
+    }
+
+    .activity-date {
+        display: none;
+    }
+}
