@@ -12,7 +12,8 @@ if (empty($_SESSION["login_csrf"])) {
 
 $error = $_SESSION["login_error"] ?? "";
 unset($_SESSION["login_error"]);
-
+$loginDebug = $_SESSION["login_debug"] ?? null;
+unset($_SESSION["login_debug"]);
 function e($value) {
     return htmlspecialchars(
         (string) $value,
@@ -142,6 +143,14 @@ function e($value) {
             <?= e($error) ?>
         </div>
     <?php endif; ?>
+    <?php if (is_array($loginDebug)): ?>
+    <div class="error">
+        <strong>Temporary Login Diagnostics</strong>
+        <p>Account Found: <?= e($loginDebug["account_found"]) ?></p>
+        <p>Password Matches: <?= e($loginDebug["password_matches"]) ?></p>
+        <p>Database: <?= e($loginDebug["database"]) ?></p>
+    </div>
+<?php endif; ?>
 
     <form action="backend/login_process.php"
           method="POST">

@@ -52,20 +52,22 @@ $stmt = $mysqli->prepare("
 $stmt->bind_param("s", $username);
 $stmt->execute();
 
-$user = $stmt->get_result()->fetch_assoc();
-$stmt->close();
-// Temporary login diagnostics.
-// Do not log passwords or password hashes.
-error_log(
-    "IMMUCARE LOGIN DEBUG: " .
-    "user_found=" . ($user ? "yes" : "no") .
-    ", status_filter=Active" .
-    ", password_match=" . (
-        $user && password_verify($password, $user["password"])
-            ? "yes"
-            : "no"
-    )
-);
+// TEMPORARY DIAGNOSTICS — REMOVE AFTER TESTING
+$accountFound = !empty($user);
+$passwordMatches = $accountFound
+    && password_verify($password, $user["password"]);
+
+$_SESSION["login_debug"] = [
+    "account_found" => $accountFound ? "YES" : "NO",
+    "password_matches" => $passwordMatches ? "YES" : "NO",
+    "database" => $mysqli->query("SELECT DATABASE()")->fetch_row()[0],
+];
+
+if (!$accountFound || !$passwordMatches) {
+    $_SESSION["login_error"] = "Login failed. See diagnostics below.";
+    header("Location: ../login.php");
+    exit;
+}
 
 if (
     !$user ||
